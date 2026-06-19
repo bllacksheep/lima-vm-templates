@@ -7,7 +7,7 @@ images:
 
 cpus: 2
 memory: "4GiB"
-disk: "4GiB"
+disk: "20GiB"
 
 provision:
   - mode: system
