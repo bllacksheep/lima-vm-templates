@@ -1,2 +1,27 @@
----
-# test
+vmType: "qemu"
+os: "Linux"
+
+images:
+  - location: "https://ubuntu.com"
+    arch: "x86_64"
+
+cpus: 2
+memory: "4GiB"
+disk: "20GiB"
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux
+      apt-get update
+      apt-get upgrade -y
+      apt-get install -y git curl build-essential jq htop
+
+  - mode: system
+    script: |
+      #!/bin/bash
+      if ! timeout 20s docker --version; then
+        curl -fsSL https://docker.com | sh
+        usermod -aG docker lima
+      fi
