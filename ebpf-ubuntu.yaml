@@ -30,5 +30,3 @@ provision:
           linux-tools-$(uname -r) linux-tools-common \
           python3-pip python3-dev \
           gcc-multilib
-
-      reboot
