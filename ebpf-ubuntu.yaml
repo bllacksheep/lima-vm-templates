@@ -17,11 +17,3 @@ provision:
       apt-get update
       apt-get upgrade -y
       apt-get install -y git curl build-essential jq htop
-
-  - mode: system
-    script: |
-      #!/bin/bash
-      if ! timeout 20s docker --version; then
-        curl -fsSL https://docker.com | sh
-        usermod -aG docker lima
-      fi
