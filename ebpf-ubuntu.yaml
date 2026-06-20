@@ -30,3 +30,4 @@ provision:
           linux-tools-$(uname -r) linux-tools-common \
           python3-pip python3-dev \
           gcc-multilib
+      git clone https://github.com/bllacksheep/ebpf-testing /home/ubuntu
