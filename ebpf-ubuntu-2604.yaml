@@ -31,3 +31,4 @@ provision:
           python3-pip python3-dev \
           gcc-multilib
       git clone https://github.com/bllacksheep/ebpf-testing /home/ubuntu.guest/ebpf-testing
+      chown -R ubuntu:ubuntu /home/ubuntu.guest/ebpf-testing
