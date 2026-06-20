@@ -1,0 +1,33 @@
+vmType: "qemu"
+os: "Linux"
+
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/resolute/release-20260520/ubuntu-26.04-server-cloudimg-amd64.img"
+    arch: "x86_64"
+    digest: "sha256:dced94c031cc1f23dee14419a3723a5b110df9938de0ac31913a2bfd07c755b4"
+
+cpus: 2
+memory: "4GiB"
+disk: "20GiB"
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux
+      apt-get update
+      apt-get upgrade -y
+      apt-get install linux-generic -y
+      apt-get install -y \
+          build-essential \
+          linux-headers-$(uname -r) \
+          clang llvm libclang-dev \
+          libelf-dev libz-dev libssl-dev \
+          cmake make git \
+          libncurses-dev flex bison \
+          libbpf-dev libbpf1 \
+          bpfcc-tools libbpfcc-dev bpftrace \
+          linux-tools-$(uname -r) linux-tools-common \
+          python3-pip python3-dev \
+          gcc-multilib
+      git clone https://github.com/bllacksheep/ebpf-testing-2604 /home/ubuntu/ebpf-testing-2604
